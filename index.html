@@ -1,50 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .status {
-          display: flex;
-          align-items: center;
-          font-size: 16px;
-        }
-      
-        .dot {
-          height: 12px;
-          width: 12px;
-          background-color: green;
-          border-radius: 50%;
-          display: inline-block;
-          margin-right: 8px;
-        }
-      </style>
-      
-      
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>To Do List</title>
+<link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <p>travel</p>
-    <div class="container">
-        <label for="mySelect">your selection</label>
-        <select id="mySelect">
-            <div class="status">
-            <option value="low"><span class="dot" style="background-color: red;"></span>low</option>
-            </div>
-            <div class="status">
-            <option value="medium"></option><span class="dot" style="background-color:yellow;"></span>low</option>
-        </div>
-        <div class="status">
-            <option value="high"></option><span class="dot" style="background-color: green;"></span>low</option>
-        </div>
-        </select>
-        <button onclick="showmessage">ADD</button>
-        <p id="para"></p></div>
+<div class="container">
+<h1>To Do List</h1>
+<div class="input-1">
+<input type="text" id="taskInput" placeholder="Enter your task" />
+<select id="priorityInput">
+    <option value="low">🟢 Low</option>
+    <option value="medium">🟡 Medium</option>
+    <option value="high">🔴 High</option>
+  </select>
+  
+<button id="addTask">Add</button>
+</div>
+<ul id="taskList"></ul>
+<p id="taskCounter">Completed: 0 | Uncompleted: 0</p>
+</div>
 
-        
-
-          
-    <script src="./app.js"></script>
+<script src="./app.js"></script>
 </body>
 </html>

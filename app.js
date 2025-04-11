@@ -1,25 +1,52 @@
+const taskInput = document.getElementById('taskInput');
+const priorityInput = document.getElementById('priorityInput');
+const addTaskBtn = document.getElementById('addTask');
+const taskList = document.getElementById('taskList');
+const taskCounter = document.getElementById('taskCounter');
 
-    let dropdown = document.getElementById("mySelect");
-    dropdown.addEventListener("change", function() {
-        document.getElementById(para).innerHTML=("You selected: " + dropdown.value);
-  });
-  //<button onclick="removeUsername()">Remove Username</button>
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-
-  function removeUsername() {
-    localStorage.removeItem("username");
-    alert("Username removed from localStorage!");
-  }
-
-
-localStorage.setItem("user", JSON.stringify(userData));
-
-    message.innerText = "Your registration was successful!";
-    message.style.color = "green";
-{
-
-
-  function showMessage() {
-    document.getElementById("message").innerText = "✅ This message is shown inside a paragraph!";
-  }
+function updateCounter() {
+  const completed = tasks.filter(t => t.completed).length;
+  taskCounter.textContent = `Completed: ${completed} | Uncompleted: ${tasks.length - completed}`;
 }
+
+function renderTasks() {
+  taskList.innerHTML = '';
+  tasks.forEach(task => {
+    const li = document.createElement('li');
+    li.className = task.priority;
+
+    const checkbox = Object.assign(document.createElement('input'), { type: 'checkbox' });
+    checkbox.addEventListener('change', () => removeTask(task.id));
+
+    const span = document.createElement('span');
+    span.textContent = task.text;
+
+    li.append(checkbox, span);
+    taskList.appendChild(li);
+  });
+  updateCounter();
+}
+
+function removeTask(id) {
+  tasks = tasks.filter(task => task.id !== id);
+  saveAndRender();
+}
+
+function saveAndRender() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  renderTasks();
+}
+
+addTaskBtn.addEventListener('click', () => {
+  const text = taskInput.value.trim();
+  if (text) {
+    tasks.push({ id: Date.now(), text, priority: priorityInput.value, completed: false });
+    taskInput.value = '';
+    priorityInput.value = 'low';
+    saveAndRender();
+  }
+});
+
+renderTasks();
