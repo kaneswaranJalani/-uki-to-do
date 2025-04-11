@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .status {
+          display: flex;
+          align-items: center;
+          font-size: 16px;
+        }
+      
+        .dot {
+          height: 12px;
+          width: 12px;
+          background-color: green;
+          border-radius: 50%;
+          display: inline-block;
+          margin-right: 8px;
+        }
+      </style>
+      
+      
+</head>
+<body>
+    <p>travel</p>
+    <div class="container">
+        <label for="mySelect">your selection</label>
+        <select id="mySelect">
+            <div class="status">
+            <option value="low"><span class="dot" style="background-color: red;"></span>low</option>
+            </div>
+            <div></div>
+            <option value="medium"></option><span class="dot" style="background-color:yellow;"></span>low</option>
+        </div>
+        <div>
+            <option value="high"></option><span class="dot" style="background-color: green;"></span>low</option>
+        </div>
+        </select>
+        <button onclick="showmessage">ADD</button>
+        <p id="para"></p></div>
+
+        
+
+          
+    <script src="./app.js"></script>
+</body>
+</html>
